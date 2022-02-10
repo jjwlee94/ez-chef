@@ -24,7 +24,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.24.0",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^5.0.0",
     "react-scroll-motion": "^0.2.1",
     "react-typewriter-effect": "^1.1.0",
     "validator": "^13.7.0",
@@ -54,5 +54,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5"
+  }
 }
