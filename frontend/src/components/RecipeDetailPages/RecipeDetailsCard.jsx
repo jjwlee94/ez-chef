@@ -61,7 +61,7 @@ const RecipeDetails = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/search/details/${id}`)
+      .get(`/search/details/${id}`)
       .then(function (response) {
         setDetails(response.data);
         console.log("response", response.data);
@@ -73,7 +73,7 @@ const RecipeDetails = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/favourites/check/${user}/${id}`)
+      .get(`/favourites/check/${user}/${id}`)
       .then((response) => {
         if (response.data) {
           console.log("response.data here", response.data);
@@ -89,7 +89,7 @@ const RecipeDetails = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/groceries/check/${user}/${id}`)
+      .get(`/groceries/check/${user}/${id}`)
       .then((response) => {
         if (response.data) {
           console.log("response.data here", response.data);
@@ -117,7 +117,7 @@ const RecipeDetails = ({ user }) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = `http://localhost:8000/favourites/api/${user}/${details.id}`;
+      const URL = `/favourites/api/${user}/${details.id}`;
       axios
         .post(URL, details)
         .then(() => setIsFav(true))
@@ -134,10 +134,7 @@ const RecipeDetails = ({ user }) => {
   const onClickGrocery = () => {
     if (user) {
       axios
-        .post(
-          `http://localhost:8000/groceries/api/${user}/${details.id}`,
-          details
-        )
+        .post(`/groceries/api/${user}/${details.id}`, details)
         .then(() => setIsGroceries(true))
         .catch((err) => {
           deleteGroceryList();
@@ -148,7 +145,7 @@ const RecipeDetails = ({ user }) => {
   };
 
   const deleteFavourite = () => {
-    const url = `http://localhost:8000/favourites/${user}/${details.id}`;
+    const url = `/favourites/${user}/${details.id}`;
     axios
       .delete(url)
       .then(() => {
@@ -161,7 +158,7 @@ const RecipeDetails = ({ user }) => {
   };
 
   const deleteGroceryList = () => {
-    const url = `http://localhost:8000/groceries/${user}/${details.id}`;
+    const url = `/groceries/${user}/${details.id}`;
     axios
       .delete(url)
       .then(() => setIsGroceries(false))
@@ -184,8 +181,7 @@ const RecipeDetails = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -4.5,
-        }}
-      >
+        }}>
         <Typography component="h1" variant="h4" sx={{ p: 1 }}>
           {details.title}
         </Typography>
@@ -207,8 +203,7 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}
-              >
+                open={addFav}>
                 <Button onClick={myFavouriteFunction}>
                   <StarIcon />
                 </Button>
@@ -223,8 +218,7 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}
-              >
+                open={addFav}>
                 <Button onClick={myFavouriteFunction}>
                   <StarBorderIcon />
                 </Button>
@@ -240,8 +234,7 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}
-              >
+                open={addGroceries}>
                 <Button onClick={myGroceryFunction}>
                   <ShoppingCartIcon />
                 </Button>
@@ -256,8 +249,7 @@ const RecipeDetails = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}
-              >
+                open={addGroceries}>
                 <Button onClick={myGroceryFunction}>
                   <AddShoppingCartIcon />
                 </Button>
@@ -281,8 +273,7 @@ const RecipeDetails = ({ user }) => {
           <Grid
             x={{
               p: 1,
-            }}
-          >
+            }}>
             <Typography variant="h5" paddingTop={3}>
               Current Servings: {details.servings * servingRatio}
             </Typography>
@@ -291,8 +282,7 @@ const RecipeDetails = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography fontSize={18} paddingLeft={2}>
                 Convert Servings:{" "}
               </Typography>
@@ -329,8 +319,7 @@ const RecipeDetails = ({ user }) => {
                 alignItems: "flex-start",
                 textAlign: "left",
                 fontSize: 18,
-              }}
-            >
+              }}>
               {Object.values(details).length
                 ? removeTags(details.instructions)
                     .split(".")
@@ -340,8 +329,7 @@ const RecipeDetails = ({ user }) => {
                         <li
                           key={removeTags(details.instructions)
                             .split(".")
-                            .indexOf(each)}
-                        >
+                            .indexOf(each)}>
                           {each + "."}
                         </li>
                       );

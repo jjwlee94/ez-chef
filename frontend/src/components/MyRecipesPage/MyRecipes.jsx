@@ -34,7 +34,7 @@ const MyRecipes = ({ user }) => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:8000/recipes/${user}`)
+      .get(`/recipes/${user}`)
       .then(function (response) {
         setMyRecipes(response.data);
       })
@@ -48,7 +48,7 @@ const MyRecipes = ({ user }) => {
   }, []);
 
   const deleteRecipe = (id) => {
-    const URL = `http://localhost:8000/recipes/${user}/${id}`;
+    const URL = `/recipes/${user}/${id}`;
     axios
       .delete(URL)
       .then(function (response) {
@@ -90,7 +90,7 @@ const MyRecipes = ({ user }) => {
               alignItems="center">
               {myRecipes.length ? (
                 myRecipes.map((recip) => {
-                  const url = `http://localhost:3000/myRecipes/${recip._id}`;
+                  const url = `/myRecipes/${recip._id}`;
                   return (
                     <Grid item key={recip}>
                       <Card

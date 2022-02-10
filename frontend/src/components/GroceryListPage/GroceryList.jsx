@@ -27,7 +27,7 @@ const GroceryList = ({ user }) => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:8000/groceries/${user}`)
+      .get(`/groceries/${user}`)
       .then(function (response) {
         setMyGroceryList(response.data);
       })
@@ -58,8 +58,7 @@ const GroceryList = ({ user }) => {
               alignContent: "center",
               justifyContent: "center",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography textAlign="center" variant="h4">
               My Grocery List
               {myGroceryList.length ? null : (
@@ -69,8 +68,7 @@ const GroceryList = ({ user }) => {
                     flexGrow: 1,
                     height: "100vh",
                     overflow: "auto",
-                  }}
-                >
+                  }}>
                   <Button href="/search" variant="outlined" size="large">
                     Search For Recipes
                   </Button>

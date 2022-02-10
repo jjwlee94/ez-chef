@@ -13,7 +13,7 @@ import {
 
 const RecipesList = ({ myGroceryList, user }) => {
   const deleteGroceryList = (id) => {
-    const url = `http://localhost:8000/groceries/${user}/${id}`;
+    const url = `/groceries/${user}/${id}`;
     axios
       .delete(url)
       .then(function (response) {
@@ -34,8 +34,7 @@ const RecipesList = ({ myGroceryList, user }) => {
         // width="50vw"
         direction="column"
         justifyContent="center"
-        alignItems="center"
-      >
+        alignItems="center">
         {myGroceryList.length ? (
           <Typography variant="h5">List of Recipes</Typography>
         ) : null}
@@ -46,15 +45,14 @@ const RecipesList = ({ myGroceryList, user }) => {
           spacing={{ xs: 2, md: 2 }}
           direction="column"
           justifyContent="center"
-          alignItems="center"
-        >
+          alignItems="center">
           {myGroceryList.length
             ? myGroceryList.map((groceryList) => {
                 let url = "";
                 if (groceryList.grocery_list_recipeID.length <= 10) {
-                  url += `http://localhost:3000/search/${groceryList.grocery_list_recipeID}`;
+                  url += `/search/${groceryList.grocery_list_recipeID}`;
                 } else {
-                  url += `http://localhost:3000/myRecipes/${groceryList.grocery_list_recipeID}`;
+                  url += `/myRecipes/${groceryList.grocery_list_recipeID}`;
                 }
                 return (
                   <Grid item key={groceryList.grocery_list_recipeID}>
@@ -68,8 +66,7 @@ const RecipesList = ({ myGroceryList, user }) => {
                         ":hover": {
                           boxShadow: 10,
                         },
-                      }}
-                    >
+                      }}>
                       <CardContent
                         sx={{
                           flexGrow: 1,
@@ -77,15 +74,13 @@ const RecipesList = ({ myGroceryList, user }) => {
                           paddingRight: 2,
                           paddingTop: 1,
                           paddingBottom: 1,
-                        }}
-                      >
+                        }}>
                         <Link
                           style={{
                             color: "black",
                             textDecoration: "none",
                           }}
-                          href={url}
-                        >
+                          href={url}>
                           <Typography fontSize={18}>
                             {groceryList.grocery_list_title}
                           </Typography>
@@ -99,8 +94,7 @@ const RecipesList = ({ myGroceryList, user }) => {
                               groceryList.grocery_list_recipeID
                             );
                           }}
-                          size="medium"
-                        >
+                          size="medium">
                           Remove
                         </Button>
                       </CardActions>

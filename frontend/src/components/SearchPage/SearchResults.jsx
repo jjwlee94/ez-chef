@@ -58,7 +58,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/search/results/${results}`)
+      .get(`/search/results/${results}`)
       .then(function (response) {
         console.log("response.data hello", response.data);
         // handle success
@@ -91,8 +91,7 @@ const SearchResults = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -101,8 +100,7 @@ const SearchResults = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography variant="h3">Search For Recipes</Typography>
             <Paper
               component="form"
@@ -115,8 +113,7 @@ const SearchResults = () => {
                 ":hover": {
                   boxShadow: 20,
                 },
-              }}
-            >
+              }}>
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -133,8 +130,7 @@ const SearchResults = () => {
                 <IconButton
                   onClick={reloadSearch}
                   sx={{ p: "10px" }}
-                  aria-label="search"
-                >
+                  aria-label="search">
                   <SearchIcon />
                 </IconButton>
               )}
@@ -147,13 +143,11 @@ const SearchResults = () => {
                       </Typography>
                     }
                     onClose={handleTooltipClose}
-                    open={tooltip}
-                  >
+                    open={tooltip}>
                     <IconButton
                       onClick={handleTooltipOpen}
                       sx={{ p: "10px" }}
-                      aria-label="search"
-                    >
+                      aria-label="search">
                       <SearchIcon />
                     </IconButton>
                   </Tooltip>
@@ -180,8 +174,7 @@ const SearchResults = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Grid
               container
               paddingRight={4}
@@ -193,15 +186,14 @@ const SearchResults = () => {
               direction="row"
               justifyContent="center"
               alignItems="center"
-              textAlign="center"
-            >
+              textAlign="center">
               {recipeData.length
                 ? recipeData
                     .sort((a, b) =>
                       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
                     )
                     .map((recip, index) => {
-                      const url = `http://localhost:3000/search/${recip.id}`;
+                      const url = `/search/${recip.id}`;
                       return (
                         <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
                           <Card
@@ -215,20 +207,17 @@ const SearchResults = () => {
                               ":hover": {
                                 boxShadow: 20,
                               },
-                            }}
-                          >
+                            }}>
                             <CardContent
                               sx={{
                                 flexGrow: 1,
-                              }}
-                            >
+                              }}>
                               <Link
                                 href={url}
                                 style={{
                                   color: "black",
                                   textDecoration: "none",
-                                }}
-                              >
+                                }}>
                                 <Typography
                                   fontSize={17}
                                   paddingTop={7}
@@ -238,8 +227,7 @@ const SearchResults = () => {
                                   display="flex"
                                   justifyContent="center"
                                   direction="column"
-                                  alignItems="center"
-                                >
+                                  alignItems="center">
                                   {recip.title}
                                 </Typography>
                                 <CardMedia

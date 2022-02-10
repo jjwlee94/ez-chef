@@ -61,7 +61,7 @@ const MyRecipeDetailsCard = ({ user }) => {
   useEffect(() => {
     console.log("I am my recipeID", id);
     axios
-      .get(`http://localhost:8000/recipes/recipeDetails/${user}/${id}`)
+      .get(`/recipes/recipeDetails/${user}/${id}`)
       .then(function (response) {
         setDetails(response.data[0]);
         console.log("response", response.data[0]);
@@ -73,7 +73,7 @@ const MyRecipeDetailsCard = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/favourites/check/${user}/${id}`)
+      .get(`/favourites/check/${user}/${id}`)
       .then((response) => {
         if (response.data) {
           console.log("response.data here", response.data);
@@ -89,7 +89,7 @@ const MyRecipeDetailsCard = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/groceries/check/${user}/${id}`)
+      .get(`/groceries/check/${user}/${id}`)
       .then((response) => {
         if (response.data) {
           console.log("response.data here", response.data);
@@ -121,7 +121,7 @@ const MyRecipeDetailsCard = ({ user }) => {
 
   const onClickFavourite = () => {
     if (user) {
-      const URL = `http://localhost:8000/favourites/myRecipes/${user}/${details._id}`;
+      const URL = `/favourites/myRecipes/${user}/${details._id}`;
       axios
         .post(URL, details)
         .then(() => setIsFav(true))
@@ -138,10 +138,7 @@ const MyRecipeDetailsCard = ({ user }) => {
   const onClickGrocery = () => {
     if (user) {
       axios
-        .post(
-          `http://localhost:8000/groceries/myRecipes/${user}/${details._id}`,
-          details
-        )
+        .post(`/groceries/myRecipes/${user}/${details._id}`, details)
         .then(() => setIsGroceries(true))
         .catch((err) => {
           deleteGroceryList();
@@ -152,7 +149,7 @@ const MyRecipeDetailsCard = ({ user }) => {
   };
 
   const deleteFavourite = () => {
-    const url = `http://localhost:8000/favourites/${user}/${details._id}`;
+    const url = `/favourites/${user}/${details._id}`;
     axios
       .delete(url)
       .then(() => {
@@ -164,7 +161,7 @@ const MyRecipeDetailsCard = ({ user }) => {
   };
 
   const deleteGroceryList = (id) => {
-    const url = `http://localhost:8000/groceries/${user}/${details._id}`;
+    const url = `/groceries/${user}/${details._id}`;
     axios
       .delete(url)
       .then(() => {
@@ -189,8 +186,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           alignItems: "center",
           textAlign: "center",
           marginRight: -4.75,
-        }}
-      >
+        }}>
         <Typography component="h1" variant="h4" sx={{ p: 1 }}>
           {details.title}
         </Typography>
@@ -206,8 +202,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Button
             onClick={() => {
               onClickEdit(details._id);
-            }}
-          >
+            }}>
             <EditIcon />
           </Button>
 
@@ -220,8 +215,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}
-              >
+                open={addFav}>
                 <Button onClick={myFavouriteFunction}>
                   <StarIcon />
                 </Button>
@@ -236,8 +230,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleFavouriteTooltipClose}
-                open={addFav}
-              >
+                open={addFav}>
                 <Button onClick={myFavouriteFunction}>
                   <StarBorderIcon />
                 </Button>
@@ -253,8 +246,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}
-              >
+                open={addGroceries}>
                 <Button onClick={myGroceryFunction}>
                   <ShoppingCartIcon />
                 </Button>
@@ -269,8 +261,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                   </Typography>
                 }
                 onClose={handleGroceryTooltipClose}
-                open={addGroceries}
-              >
+                open={addGroceries}>
                 <Button onClick={myGroceryFunction}>
                   <AddShoppingCartIcon />
                 </Button>
@@ -294,8 +285,7 @@ const MyRecipeDetailsCard = ({ user }) => {
           <Grid
             sx={{
               p: 1,
-            }}
-          >
+            }}>
             <Typography variant="h5" paddingTop={2}>
               Current Servings: {details.serving_size * servingRatio}
             </Typography>
@@ -304,8 +294,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-              }}
-            >
+              }}>
               <Typography fontSize={18}>Convert Servings: </Typography>
               <TextField
                 style={{
@@ -340,8 +329,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                 paddingLeft: 3,
                 paddingRight: 5,
                 fontSize: 18,
-              }}
-            >
+              }}>
               {Object.values(details).length ? (
                 removeTags(details.instructions)
                   .split(".")
@@ -351,8 +339,7 @@ const MyRecipeDetailsCard = ({ user }) => {
                       <li
                         key={removeTags(details.instructions)
                           .split(".")
-                          .indexOf(each)}
-                      >
+                          .indexOf(each)}>
                         {each + "."}
                       </li>
                     );

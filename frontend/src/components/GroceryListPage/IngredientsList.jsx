@@ -49,7 +49,7 @@ const IngredientList = ({ myGroceryList }) => {
     };
     console.log("send", send);
     axios
-      .put("http://localhost:8000/twilio", send)
+      .put("/twilio", send)
       .then((res) => {
         console.log("text sent", res);
         setPhone("");
@@ -69,8 +69,7 @@ const IngredientList = ({ myGroceryList }) => {
         p={2}
         direction="column"
         justifyContent="center"
-        alignItems="center"
-      >
+        alignItems="center">
         {myGroceryList.length ? (
           <Typography variant="h5">List of Ingredients</Typography>
         ) : null}
@@ -81,19 +80,16 @@ const IngredientList = ({ myGroceryList }) => {
           direction="column"
           justifyContent="center"
           alignItems="center"
-          padding="0"
-        >
+          padding="0">
           {myGroceryList.length ? (
             <Grid
               p={2}
               direction="column"
               justifyContent="center"
               alignItems="center"
-              backgroundColor="white"
-            >
+              backgroundColor="white">
               <Grid
-                sx={{ marginBottom: 2, display: "flex", flexDirection: "row" }}
-              >
+                sx={{ marginBottom: 2, display: "flex", flexDirection: "row" }}>
                 <Grid sx={{ p: 0.5 }}>
                   <TextField
                     id="outlined-basic"
@@ -107,8 +103,7 @@ const IngredientList = ({ myGroceryList }) => {
                   <Button
                     size="medium"
                     variant="outlined"
-                    onClick={textGroceries}
-                  >
+                    onClick={textGroceries}>
                     Text me my groceries
                   </Button>
                 </Grid>
@@ -120,8 +115,7 @@ const IngredientList = ({ myGroceryList }) => {
                       display: "flex",
                       paddingLeft: 14,
                       textAlign: "left",
-                    }}
-                  >
+                    }}>
                     <Typography fontSize={18}>
                       <li key={index}>
                         {`${groceryItem

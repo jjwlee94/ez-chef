@@ -33,7 +33,7 @@ const Favourites = ({ user }) => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:8000/favourites/${user}`)
+      .get(`/favourites/${user}`)
       .then(function (response) {
         setMyFavs(response.data);
       })
@@ -47,7 +47,7 @@ const Favourites = ({ user }) => {
   }, []);
 
   const deleteFavourite = (id) => {
-    const url = `http://localhost:8000/favourites/${user}/${id}`;
+    const url = `/favourites/${user}/${id}`;
     axios
       .delete(url)
       .then(function (response) {
@@ -87,9 +87,9 @@ const Favourites = ({ user }) => {
                 myFavs.map((recip) => {
                   let url = "";
                   if (recip.favourite_recipeID.length < 10) {
-                    url += `http://localhost:3000/search/${recip.favourite_recipeID}`;
+                    url += `/search/${recip.favourite_recipeID}`;
                   } else {
-                    url += `http://localhost:3000/myRecipes/${recip.favourite_recipeID}`;
+                    url += `/myRecipes/${recip.favourite_recipeID}`;
                   }
                   return (
                     <Grid item key={recip}>
