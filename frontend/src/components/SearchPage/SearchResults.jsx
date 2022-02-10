@@ -38,7 +38,7 @@ const SearchResults = () => {
   const navigate = useNavigate();
 
   let url = window.location.pathname;
-  const results = url.split("/search/results/")[1];
+  const results = url.split("/api/search/results/")[1];
 
   const handleTooltipClose = () => {
     setTooltip(false);
@@ -58,7 +58,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     axios
-      .get(`/search/results/${results}`)
+      .get(`/api/search/results/${results}`)
       .then(function (response) {
         console.log("response.data hello", response.data);
         // handle success
@@ -73,7 +73,7 @@ const SearchResults = () => {
   }, [results]);
 
   const reloadSearch = () => {
-    navigate(`/search/results/${replaceString(search)}`);
+    navigate(`/api/search/results/${replaceString(search)}`);
   };
 
   return (

@@ -8,7 +8,6 @@ import {
   CssBaseline,
   ClickAwayListener,
   Grid,
-  Paper,
   TextField,
   Tooltip,
   Typography,
@@ -18,7 +17,6 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
-import { textAlign } from "@mui/system";
 
 const RecipeDetails = ({ user }) => {
   const [details, setDetails] = useState({});
@@ -61,7 +59,7 @@ const RecipeDetails = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`/search/details/${id}`)
+      .get(`/api/search/details/${id}`)
       .then(function (response) {
         setDetails(response.data);
         console.log("response", response.data);

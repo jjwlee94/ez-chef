@@ -87,7 +87,7 @@ const Nav = ({ user, username }) => {
     if (!search) {
       return;
     }
-    navigate(`/search/results/${replaceString(search)}`);
+    navigate(`/api/search/results/${replaceString(search)}`);
     window.location.reload();
   };
 
@@ -105,8 +105,7 @@ const Nav = ({ user, username }) => {
           justifyContent: "space-between",
           alignItems: "center",
           textAlign: "center",
-        }}
-      >
+        }}>
         <Grid sx={{ display: "flex", flexDirection: "row", width: 160 }}>
           <Toolbar>
             <Tooltip title="Your Menu">
@@ -114,8 +113,7 @@ const Nav = ({ user, username }) => {
                 aria-label="open drawer"
                 onClick={toggleOpen}
                 edge="start"
-                sx={{ mr: 2, ...(open && { display: "none" }) }}
-              >
+                sx={{ mr: 2, ...(open && { display: "none" }) }}>
                 {user && (
                   <Avatar sx={{ width: 35, height: 35 }}>
                     {username.charAt(0)}
@@ -151,8 +149,7 @@ const Nav = ({ user, username }) => {
             <IconButton
               onClick={showSearch}
               sx={{ p: "10px" }}
-              aria-label="search"
-            >
+              aria-label="search">
               <SearchIcon />
             </IconButton>
           )}
@@ -165,13 +162,11 @@ const Nav = ({ user, username }) => {
                   </Typography>
                 }
                 onClose={handleTooltipClose}
-                open={tooltip}
-              >
+                open={tooltip}>
                 <IconButton
                   onClick={handleTooltipOpen}
                   sx={{ p: "10px" }}
-                  aria-label="search"
-                >
+                  aria-label="search">
                   <SearchIcon />
                 </IconButton>
               </Tooltip>
@@ -191,13 +186,11 @@ const Nav = ({ user, username }) => {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader
           sx={{
             backgroundColor: "#b7b7a4",
-          }}
-        >
+          }}>
           <IconButton onClick={toggleOpen}>
             <ChevronLeftIcon />
           </IconButton>
@@ -207,23 +200,20 @@ const Nav = ({ user, username }) => {
           sx={{
             backgroundColor: "#b7b7a4",
             height: "100%",
-          }}
-        >
+          }}>
           <ListItem
             sx={{
               "&:hover": {
                 backgroundColor: "#6b705c",
               },
-            }}
-          >
+            }}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <Link
               to="/"
               onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
+              style={{ textDecoration: "none" }}>
               <ListItemText
                 primary="Home"
                 primaryTypographyProps={{ fontSize: "17px" }}
@@ -238,16 +228,14 @@ const Nav = ({ user, username }) => {
               "&:hover": {
                 backgroundColor: "#6b705c",
               },
-            }}
-          >
+            }}>
             <ListItemIcon>
               <BrunchDiningIcon />
             </ListItemIcon>
             <Link
               to="/about"
               onClick={toggleOpen}
-              style={{ textDecoration: "none" }}
-            >
+              style={{ textDecoration: "none" }}>
               <ListItemText
                 primary="About Us"
                 primaryTypographyProps={{ fontSize: "17px" }}
@@ -267,14 +255,12 @@ const Nav = ({ user, username }) => {
                     "&:hover": {
                       backgroundColor: "#6b705c",
                     },
-                  }}
-                >
+                  }}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <Link
                     to={item.path}
                     onClick={toggleOpen}
-                    style={{ textDecoration: "none" }}
-                  >
+                    style={{ textDecoration: "none" }}>
                     <ListItemText
                       primaryTypographyProps={{ fontSize: "17px" }}
                       primary={item.desc}
@@ -294,16 +280,14 @@ const Nav = ({ user, username }) => {
                   "&:hover": {
                     backgroundColor: "#6b705c",
                   },
-                }}
-              >
+                }}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>
                 <Link
                   to="/register"
                   onClick={toggleOpen}
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   <ListItemText
                     primaryTypographyProps={{ fontSize: "17px" }}
                     primary="Sign Up"
@@ -318,16 +302,14 @@ const Nav = ({ user, username }) => {
                   "&:hover": {
                     backgroundColor: "#6b705c",
                   },
-                }}
-              >
+                }}>
                 <ListItemIcon>
                   <PersonIcon />
                 </ListItemIcon>
                 <Link
                   to="/login"
                   onClick={toggleOpen}
-                  style={{ textDecoration: "none" }}
-                >
+                  style={{ textDecoration: "none" }}>
                   <ListItemText
                     primaryTypographyProps={{ fontSize: "17px" }}
                     primary="Login"

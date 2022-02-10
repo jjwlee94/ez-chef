@@ -45,7 +45,7 @@ const SearchForm = () => {
     return str.replaceAll(" ", "+").replaceAll(",", "+");
   };
   const showSearch = (e) => {
-    navigate(`/search/results/${replaceString(search)}`);
+    navigate(`/api/search/results/${replaceString(search)}`);
   };
 
   return (
@@ -65,8 +65,7 @@ const SearchForm = () => {
             flexDirection: "column",
             alignItems: "center",
             height: "93vh",
-          }}
-        >
+          }}>
           <Box
             component="main"
             sx={{
@@ -75,8 +74,7 @@ const SearchForm = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}
-          >
+            }}>
             <Typography variant="h3">Search For Recipes</Typography>
             <Paper
               component="form"
@@ -89,8 +87,7 @@ const SearchForm = () => {
                 ":hover": {
                   boxShadow: 20,
                 },
-              }}
-            >
+              }}>
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
                 placeholder="Enter Ingredients or Keywords"
@@ -107,8 +104,7 @@ const SearchForm = () => {
                 <IconButton
                   onClick={showSearch}
                   sx={{ p: "10px" }}
-                  aria-label="search"
-                >
+                  aria-label="search">
                   <SearchIcon />
                 </IconButton>
               )}
@@ -121,13 +117,11 @@ const SearchForm = () => {
                       </Typography>
                     }
                     onClose={handleTooltipClose}
-                    open={tooltip}
-                  >
+                    open={tooltip}>
                     <IconButton
                       onClick={handleTooltipOpen}
                       sx={{ p: "10px" }}
-                      aria-label="search"
-                    >
+                      aria-label="search">
                       <SearchIcon />
                     </IconButton>
                   </Tooltip>
