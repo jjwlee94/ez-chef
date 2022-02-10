@@ -193,7 +193,7 @@ const SearchResults = () => {
                       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
                     )
                     .map((recip, index) => {
-                      const url = `/search/${recip.id}`;
+                      const url = `/api/search/${recip.id}`;
                       return (
                         <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
                           <Card
