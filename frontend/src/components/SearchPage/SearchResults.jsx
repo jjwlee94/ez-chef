@@ -38,7 +38,7 @@ const SearchResults = () => {
   const navigate = useNavigate();
 
   let url = window.location.pathname;
-  const results = url.split("/api/search/results/")[1];
+  const results = url.split("/search/results/")[1];
 
   const handleTooltipClose = () => {
     setTooltip(false);
@@ -58,7 +58,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/search/results/${results}`)
+      .get(`/search/results/${results}`)
       .then(function (response) {
         console.log("response.data hello", response.data);
         // handle success
@@ -73,7 +73,7 @@ const SearchResults = () => {
   }, [results]);
 
   const reloadSearch = () => {
-    navigate(`/api/search/results/${replaceString(search)}`);
+    navigate(`/search/results/${replaceString(search)}`);
   };
 
   return (
@@ -193,7 +193,7 @@ const SearchResults = () => {
                       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
                     )
                     .map((recip, index) => {
-                      const url = `/api/search/${recip.id}`;
+                      const url = `/search/${recip.id}`;
                       return (
                         <Grid key={index} item xs={12} sm={12} md={4} lg={4}>
                           <Card

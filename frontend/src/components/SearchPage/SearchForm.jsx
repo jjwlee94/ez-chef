@@ -45,7 +45,7 @@ const SearchForm = () => {
     return str.replaceAll(" ", "+").replaceAll(",", "+");
   };
   const showSearch = (e) => {
-    navigate(`/api/search/results/${replaceString(search)}`);
+    navigate(`/search/results/${replaceString(search)}`);
   };
 
   return (

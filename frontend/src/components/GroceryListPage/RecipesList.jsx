@@ -50,7 +50,7 @@ const RecipesList = ({ myGroceryList, user }) => {
             ? myGroceryList.map((groceryList) => {
                 let url = "";
                 if (groceryList.grocery_list_recipeID.length <= 10) {
-                  url += `/api/search/${groceryList.grocery_list_recipeID}`;
+                  url += `/search/${groceryList.grocery_list_recipeID}`;
                 } else {
                   url += `/myRecipes/${groceryList.grocery_list_recipeID}`;
                 }

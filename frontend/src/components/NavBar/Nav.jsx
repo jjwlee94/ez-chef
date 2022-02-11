@@ -87,7 +87,7 @@ const Nav = ({ user, username }) => {
     if (!search) {
       return;
     }
-    navigate(`/api/search/results/${replaceString(search)}`);
+    navigate(`/search/results/${replaceString(search)}`);
     window.location.reload();
   };
 

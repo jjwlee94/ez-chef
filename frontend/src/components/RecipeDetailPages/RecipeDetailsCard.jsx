@@ -59,7 +59,7 @@ const RecipeDetails = ({ user }) => {
 
   useEffect(() => {
     axios
-      .get(`/api/search/details/${id}`)
+      .get(`/search/details/${id}`)
       .then(function (response) {
         setDetails(response.data);
         console.log("response", response.data);
