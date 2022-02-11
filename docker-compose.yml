@@ -2,7 +2,8 @@ version: "3"
 
 services:
   react-app:
-    image: react-app-dev
+    image: react-app
+    build: ./frontend/
     stdin_open: true
     ports:
       - "3000:3000"
@@ -14,7 +15,7 @@ services:
 
   api-server:
     image: api-server
-    env_file: ./backend/.env
+    build: ./backend/
     ports:
       - "8000:8000"
     networks:
