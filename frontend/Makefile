@@ -1,2 +1,2 @@
 build:
-	docker build -t react-app .
+	docker build -t jjwlee94/react-app .
