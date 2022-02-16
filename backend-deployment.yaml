@@ -26,6 +26,8 @@ spec:
           persistentVolumeClaim:
             claimName: mongo-data
 
+---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -53,6 +55,8 @@ spec:
   type: NodePort
   selector:
     app: ez-chef-mongo-1
+
+---
 
 apiVersion: apps/v1
 kind: Deployment
