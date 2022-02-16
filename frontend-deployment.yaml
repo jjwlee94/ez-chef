@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ez-chef-react-app-1
+spec:
+  selector:
+    matchLabels:
+      app: ez-chef-react-app-1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ez-chef-react-app-1
+    spec:
+      containers:
+        - name: ez-chef-react-app-1
+          image: react-app
+          ports:
+            - containerPort: 3000
