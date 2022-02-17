@@ -58,7 +58,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     axios
-      .get(`/search/results/${results}`)
+      .get(`http://localhost:8000/search/results/${results}`)
       .then(function (response) {
         console.log("response.data hello", response.data);
         // handle success
@@ -73,7 +73,7 @@ const SearchResults = () => {
   }, [results]);
 
   const reloadSearch = () => {
-    navigate(`/search/results/${replaceString(search)}`);
+    navigate(`http://localhost:8000/search/results/${replaceString(search)}`);
   };
 
   return (
