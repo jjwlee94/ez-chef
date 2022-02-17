@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: ez-chef-api-server-1
-          image: api-server
+          image: jjwlee94/api-server
           ports:
             - containerPort: 8000
           volumeMounts:

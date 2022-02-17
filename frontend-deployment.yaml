@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: ez-chef-react-app-1
-          image: react-app
+          image: jjwlee94/react-app
           ports:
             - containerPort: 3000
