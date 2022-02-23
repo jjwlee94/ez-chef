@@ -4,7 +4,6 @@ build:
 	kind create cluster
 	kubectl apply -f backend-deployment.yaml
 	kubectl apply -f frontend-deployment.yaml
-	kubectl wait --for=condition=complete -n d1 job/test-job1
 
 run:
 	docker-compose up
